@@ -11,14 +11,16 @@ using UnityEngine.UIElements;
 
 public class UIHandlerScene01 : MonoBehaviour
 {
-    public InputField playerText1;
-    public string playerStr1;
+    public InputField playerInput1;
+    private string playerStr1;
+    public Button exitBtn;
+    public Button toScene2;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        playerText1 = InputField.FindObjectOfType<InputField>();
-        Debug.Log("playerText1 = " + playerText1);
+        playerInput1 = InputField.FindObjectOfType<InputField>();
     }
 
     // Update is called once per frame
@@ -30,6 +32,9 @@ public class UIHandlerScene01 : MonoBehaviour
     public void ReadInput(string s)
     {
         playerStr1 = s;
+        Debug.Log("playerText1 = " + playerInput1.text);
+
+        DataManager.Manager.player = playerStr1;
         Debug.Log("Leyendo entrada (playerStr1): " + playerStr1);
     }
 

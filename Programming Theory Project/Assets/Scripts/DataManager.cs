@@ -6,7 +6,12 @@ using UnityEngine.UI;
 
 public class DataManager : MonoBehaviour
 {
-    public static DataManager Instance;
+    private static DataManager _manager;
+    public static DataManager Manager
+    {
+        get { return _manager; }
+        set { _manager = value; }
+    }
 
     public Text player;             // variable, nombre del jugador
     public int figureNum;           // numero de opción de figura
@@ -14,12 +19,12 @@ public class DataManager : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance!= null)
+        if(_manager!= null)
         {
             Destroy(gameObject);    // destruye instancias anteriores
             return;
         }
-        Instance = this;            // crea la instancia
+        _manager = this;            // crea la instancia
         DontDestroyOnLoad(gameObject);  // no destruye el objeto
         LoadPlayer();               // carga nombre del jugador al principio
         if(PlayerPrefs.HasKey("Ultima Figura"))
