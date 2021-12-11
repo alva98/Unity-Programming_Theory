@@ -12,9 +12,8 @@ public class UIHandlerScene02 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerText2 = InputField.FindObjectOfType<Text>();
-        //playerText2 = playerText1
-        Debug.Log("playerText2 = " + playerText2);
+        playerText2.text = GameManager.Manager.Player;
+        Debug.Log("playerText2 = " + playerText2.text);
     }
 
     // Update is called once per frame

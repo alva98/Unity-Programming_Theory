@@ -315,8 +315,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2080f926cf48d4f47beadcd02fb90766, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerText1: {fileID: 735978249}
-  playerStr1: 
+  playerInput1: {fileID: 735978249}
+  figureGeo: {fileID: 832683640}
+  toScene2: {fileID: 1225645342}
+  exitBtn: {fileID: 2144733013}
 --- !u!1 &541316866
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,8 +587,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 521261931}
         m_TargetAssemblyTypeName: UIHandlerScene01, Assembly-CSharp
-        m_MethodName: ReadInput
-        m_Mode: 0
+        m_MethodName: ReadPlayerInput
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -677,7 +679,7 @@ RectTransform:
   - {fileID: 375803905}
   - {fileID: 1780099668}
   m_Father: {fileID: 2103958618}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -737,7 +739,19 @@ MonoBehaviour:
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 521261931}
+        m_TargetAssemblyTypeName: UIHandlerScene01, Assembly-CSharp
+        m_MethodName: ReadFigureGeoInput
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1191,7 +1205,7 @@ RectTransform:
   m_LocalScale: {x: 1.3927268, y: 0.870068, z: 1}
   m_Children: []
   m_Father: {fileID: 2103958618}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1400,8 +1414,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1604006686}
+  - component: {fileID: 1604006687}
   m_Layer: 0
-  m_Name: DataManager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1421,6 +1436,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1604006687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604006685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dc13fe41ae74274fb7733b19886d09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1710137315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1610,8 +1637,8 @@ RectTransform:
   m_Children:
   - {fileID: 541316867}
   - {fileID: 735978248}
-  - {fileID: 1393824550}
   - {fileID: 832683639}
+  - {fileID: 1393824550}
   - {fileID: 1225645341}
   - {fileID: 2144733012}
   m_Father: {fileID: 521261930}
