@@ -12,14 +12,31 @@ public class UIHandlerScene02 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerText2.text = GameManager.Manager.Player;
-        Debug.Log("playerText2 = " + playerText2.text);
+        playerText2.text = "Player: " + GameManager.Manager.Player;
+        Debug.Log("(UIHndlerScne02) - playerText2 - " + playerText2.text);
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public class FigureBase
+    {
+        public virtual void FigureGeo()
+        {
+            Debug.Log("Clase padre - Figura base");
+        }
+    }
+
+    public class FigureSquare : FigureBase
+    {
+        public override void FigureGeo()
+        {
+            float width = 3.0f;
+            Debug.Log("Figura cuadrado: lado = " + width + " - Area = " + width*width);
+        }
     }
 
     public void BackToScene1()
