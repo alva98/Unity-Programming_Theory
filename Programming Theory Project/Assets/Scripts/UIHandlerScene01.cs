@@ -11,7 +11,6 @@ using UnityEngine.SceneManagement;
 public class UIHandlerScene01 : MonoBehaviour
 {
     public InputField playerInput1;
-    private string playerStr1;
     public InputField figureGeo;
     private int figureInt1;
     public Button toScene2;
@@ -41,33 +40,28 @@ public class UIHandlerScene01 : MonoBehaviour
     // Read player's name
     public void ReadPlayerInput(string s)
     {
-        playerStr1 = s;
-        Debug.Log("Asignando entrada a variable playerStr1: " + playerStr1);
-
-        Debug.Log("playerInput1.text: " + playerInput1.text);
-
-        GameManager.Manager.Player = playerStr1;
+        GameManager.Manager.Player = playerInput1.text;
         Debug.Log("GameManager.Manager.Player: " + GameManager.Manager.Player);
     }
 
     // Read figure geometric number
     public void ReadFigureGeoInput(int s)
     {
-        figureInt1 = s;
-        Debug.Log("Asignando entrada a variable figureInt1: " + figureInt1);
-
-        Debug.Log("figureGeo.text: " + figureGeo.text);
-
-        GameManager.Manager.FigureNum = figureInt1;
-        Debug.Log("GameManager.Manager.Player: " + GameManager.Manager.FigureNum);
+        GameManager.Manager.FigureNum = Convert.ToByte(figureGeo.text);
+        Debug.Log("GameManager.Manager.FigureNum: " + GameManager.Manager.FigureNum);
     }
 
-    // Load scene 02
+    // Verify completed textbox and loading scene 02
     public void ToScene2()
     {
-        if (GameManager.Manager.Player == null || GameManager.Manager.Player == "")
+        if (playerInput1.text == null || playerInput1.text == "")
         {
             Debug.Log("No se coloco el nombre del jugador.");
+            SceneManager.LoadScene(0);
+        }
+        else if(figureGeo.text == null || Convert.ToByte(figureGeo.text) < 1 || Convert.ToByte(figureGeo.text) > 3)
+        {
+            Debug.Log("No se coloco el número de la figura.");
             SceneManager.LoadScene(0);
         }
         else

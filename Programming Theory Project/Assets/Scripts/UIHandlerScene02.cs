@@ -8,12 +8,14 @@ using UnityEngine.SceneManagement;
 public class UIHandlerScene02 : MonoBehaviour
 {
     public Text playerText2;
+    public Text figureText2;
+    public Button backToScene01;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerText2.text = "Player: " + GameManager.Manager.Player;
-        Debug.Log("(UIHndlerScne02) - playerText2 - " + playerText2.text);
+        ShowPlayer();
+        ShowShape();
     }
 
     // Update is called once per frame
@@ -22,20 +24,28 @@ public class UIHandlerScene02 : MonoBehaviour
         
     }
 
-    public class FigureBase
+    public void ShowPlayer()
     {
-        public virtual void FigureGeo()
-        {
-            Debug.Log("Clase padre - Figura base");
-        }
+        playerText2.text = "Jugador: " + GameManager.Manager.Player;
     }
 
-    public class FigureSquare : FigureBase
+    public void ShowShape()
     {
-        public override void FigureGeo()
+        int i = GameManager.Manager.FigureNum;
+        if (i == 1)
         {
-            float width = 3.0f;
-            Debug.Log("Figura cuadrado: lado = " + width + " - Area = " + width*width);
+            SquareShape sqShape = new SquareShape();
+            figureText2.text = sqShape.Shape(i);
+        }
+        else if (i == 2)
+        {
+            RectShape reShape = new RectShape();
+            figureText2.text = reShape.Shape(i);
+        }
+        else
+        {
+            TriShape trShape = new TriShape();
+            figureText2.text = trShape.Shape(i);
         }
     }
 
