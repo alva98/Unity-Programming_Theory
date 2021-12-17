@@ -6,11 +6,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager _manager;
-    public static GameManager Manager
-    {
-        get { return _manager; }
-    }
+    // private static GameManager _manager;
+    public static GameManager Manager { get; private set; }     // forma abreviada
 
     private string _player;             // variable, nombre del jugador
     public string Player
@@ -28,12 +25,12 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if(_manager != null)
+        if(Manager != null)
         {
             Destroy(gameObject);        // destruye instancias anteriores
             return;
         }
-        _manager = this;                // crea la instancia
+        Manager = this;                // crea la instancia
         DontDestroyOnLoad(gameObject);  // no destruye el objeto
         LoadPlayer();                   // carga nombre del jugador al principio
     }
